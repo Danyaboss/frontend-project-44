@@ -14,7 +14,8 @@
   "license": "ISC",
   "dependencies": {
     "http-server": "^14.1.1",
-    "package": "^1.0.1"
+    "package": "^1.0.1",
+    "readline-sync": "^1.4.10"
   },
   "repository": {
     "type": "git",
