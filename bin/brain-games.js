@@ -1,6 +1,10 @@
 #!/usr/bin/env node
 
-import greetUser from "../src/cli";
+import greetUser  from '../src/cli.js';
 
-greetUser()
+const startGame = () => {
+    console.log('Welcome to the Brain Games!');
+    greetUser ();
+};
 
+startGame();
