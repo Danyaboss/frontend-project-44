@@ -1,39 +1,38 @@
 #!/usr/bin/env node
-
 import playGame from '../src/index.js';
 
-const getRandom = (min, max) => Math.floor(Math.random() * (max - min)) + min;
+const getRandomInt = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
 
-const getAnswer = () => {
+const getRandomOperator = () => {
     const operators = ['+', '-', '*'];
-    const num1 = getRandom(1, 100);
-    const num2 = getRandom(1, 100);
-    const operator = operators[getRandom(0, operators.length)];
+    const randomIndex = getRandomInt(0, operators.length - 1);
+    return operators[randomIndex];
+};
 
-    const calculate = (op, n1, n2) => {
-        if (op === '+') {
-            return n1 + n2;
-        }
-        if (op === '-') {
-             return n1 - n2;
-        }
-        if (op === '*') {return n1 * n2;
-        }
-    };
-
-    const answer = calculate(operator, num1, num2);
-    const expression = `${num1} ${operator} ${num2}`;
-
-    return { expression, answer: String(answer) }; 
+const calculate = (num1, num2, operator) => {
+    switch (operator) {
+        case '+':
+            return num1 + num2;
+        case '-':
+            return num1 - num2;
+        case '*':
+            return num1 * num2;
+        
+    }
 };
 
 const gameLogic = () => {
-    console.log('What is the result of the expression?');
-    const { expression, answer } = getAnswer();
-    return { question: expression, correctAnswer: answer };
+    const num1 = getRandomInt(1, 100);
+    const num2 = getRandomInt(1, 100);
+    const operator = getRandomOperator();
+    const question = `${num1} ${operator} ${num2}`;
+    const correctAnswer = String(calculate(num1, num2, operator));
+
+    return { question, correctAnswer };
 };
 
-playGame(gameLogic);
+const playCalcGame = () => {
+    playGame(gameLogic);
+};
 
-
-    
+playCalcGame();
