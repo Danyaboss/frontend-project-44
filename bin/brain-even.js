@@ -1,12 +1,13 @@
 #!/usr/bin/env node
 
-import greetUser  from '../src/cli.js'; 
+import greetUser  from '../src/cli.js';
 import readlineSync from 'readline-sync';
 
 const playGame = () => {
     console.log('Welcome to the Brain Games!');
-    const name = greetUser ();  
+    const name = greetUser (); 
     console.log(`Hello, ${name}!`); 
+
     console.log('Answer "yes" if the number is even, otherwise answer "no".');
 
     let correctAnswersCount = 0;
